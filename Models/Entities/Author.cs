@@ -1,0 +1,29 @@
+﻿namespace Models.Entities;
+
+public class Author
+{
+    /// <summary>
+    /// Identifier code
+    /// </summary>
+    public int Id { get; set; }
+
+    /// <summary>
+    /// Surname
+    /// </summary>
+    public string Surname { get; set; }
+
+    /// <summary>
+    /// Name
+    /// </summary>
+    public string Name { get; set; }
+
+    /// <summary>
+    /// Description
+    /// </summary>
+    public string Description { get; set; }
+
+    /// <summary>
+    /// Link to books
+    /// </summary>
+    public ICollection<Book> Books { get; set; }
+}
