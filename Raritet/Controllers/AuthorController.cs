@@ -24,7 +24,7 @@ public class AuthorController : Controller
     [HttpGet("authors")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
-    public async Task<IQueryable<AuthorDTO>> GetAuthors()
+    public async Task<List<AuthorDTO>> GetAuthors()
     {
         return await Task.FromResult(_authorService.GetAuthors());
     }

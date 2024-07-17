@@ -24,7 +24,7 @@ public class BookController : Controller
     [HttpGet("books")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
-    public async Task<IEnumerable<BookDTO>> GetBooks()
+    public async Task<List<BookDTO>> GetBooks()
     {
         return await Task.FromResult(_bookService.GetBooks());
     }

@@ -8,7 +8,7 @@ public interface IBookService
     /// Method for getting all books
     /// </summary>
     /// <returns>List of AuthorDTO</returns>
-    IEnumerable<BookDTO> GetBooks();
+    List<BookDTO> GetBooks();
 
     /// <summary>
     /// Method for adding a new book

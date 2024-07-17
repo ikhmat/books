@@ -8,7 +8,7 @@ namespace BLL.Services;
 
 public class BookService : IBookService
 {
-    private IGenericDataSource<Book> _bookDataSource;
+    private readonly IGenericDataSource<Book> _bookDataSource;
 
     public BookService(IGenericDataSource<Book> bookDataSource)
     {
@@ -16,10 +16,11 @@ public class BookService : IBookService
     }
 
     /// <inheritdoc />
-    public IEnumerable<BookDTO> GetBooks()
+    public List<BookDTO> GetBooks()
     {
-        var books =  _bookDataSource.GetItems();
-        return books.ProjectToType<BookDTO>().AsEnumerable();
+        return _bookDataSource.GetItems()
+            .ProjectToType<BookDTO>()
+            .ToList();
     }
 
     /// <inheritdoc />

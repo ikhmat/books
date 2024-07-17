@@ -9,7 +9,7 @@ public interface IAuthorService
     /// Method for getting all authors
     /// </summary>
     /// <returns>List of AuthorDTO</returns>
-    IQueryable<AuthorDTO> GetAuthors();
+    List<AuthorDTO> GetAuthors();
 
     /// <summary>
     /// Method for getting author by id

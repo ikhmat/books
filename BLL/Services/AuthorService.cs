@@ -8,7 +8,7 @@ namespace BLL.Services;
 
 public class AuthorService : IAuthorService
 {
-    private IAuthorDataSource _authorDataSource;
+    private readonly IAuthorDataSource _authorDataSource;
 
     public AuthorService(IAuthorDataSource authorDataSource)
     {
@@ -16,9 +16,12 @@ public class AuthorService : IAuthorService
     }
 
     /// <inheritdoc />
-    public IQueryable<AuthorDTO> GetAuthors()
+    public List<AuthorDTO> GetAuthors()
     {
-        return _authorDataSource.GetItems().ProjectToType<AuthorDTO>();
+        throw new ArgumentException("Test exception");
+        return _authorDataSource.GetItems()
+            .ProjectToType<AuthorDTO>()
+            .ToList();
     }
 
     /// <inheritdoc />
