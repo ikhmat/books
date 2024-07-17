@@ -1,9 +1,8 @@
 using Raritet.Extensions;
-using Microsoft.Extensions.Configuration;
+using Serilog;
+
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddEntityFramework(builder.Configuration);
 builder.Services.AddDataSourceServices();
@@ -13,15 +12,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Host.AddLogger();
+
 var app = builder.Build();
 
+app.AddExceptionHandler();
 app.InitMapping();
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 

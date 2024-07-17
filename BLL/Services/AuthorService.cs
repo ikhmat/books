@@ -18,7 +18,6 @@ public class AuthorService : IAuthorService
     /// <inheritdoc />
     public List<AuthorDTO> GetAuthors()
     {
-        throw new ArgumentException("Test exception");
         return _authorDataSource.GetItems()
             .ProjectToType<AuthorDTO>()
             .ToList();
